@@ -1,0 +1,6 @@
+name: Omnipedia - Asset
+type: module
+description: Provides CSS and JavaScript asset-related functionality for Omnipedia.
+package: Omnipedia
+core_version_requirement: ^9.5 || < 10.1
+php: 8.0

@@ -1,0 +1,17 @@
+{
+  "name": "drupal/omnipedia_asset",
+  "description": "Omnipedia - Asset",
+  "type": "drupal-custom-module",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Ambient.Impact",
+      "homepage": "https://ambientimpact.com/",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^8",
+    "drupal/core": "^9.5 || < 10.1"
+  }
+}
