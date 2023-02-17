@@ -4,3 +4,6 @@ description: Provides CSS and JavaScript asset-related functionality for Omniped
 package: Omnipedia
 core_version_requirement: ^9.5 || < 10.1
 php: 8.0
+
+dependencies:
+  - advagg:advagg (>=5.0.0 || <6.0.0)

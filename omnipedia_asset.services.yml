@@ -16,3 +16,13 @@ services:
       - '@request_stack'
       - '@settings'
       - '@omnipedia_asset.css.optimizer.core.inner'
+
+  omnipedia_asset.css.optimizer.advagg:
+    class: Drupal\omnipedia_asset\Asset\CssOptimizerAdvAgg
+    decorates: advagg.optimizer.css
+    public: false
+    arguments:
+      - '@config.factory'
+      - '@event_dispatcher'
+      - '@cache.advagg'
+      - '@omnipedia_asset.css.optimizer.core.inner'

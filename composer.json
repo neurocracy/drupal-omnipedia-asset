@@ -12,6 +12,7 @@
   ],
   "require": {
     "php": "^8",
-    "drupal/core": "^9.5 || < 10.1"
+    "drupal/core": "^9.5 || < 10.1",
+    "drupal/advagg": "^5.0"
   }
 }
