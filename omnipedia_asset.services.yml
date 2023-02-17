@@ -1,0 +1,18 @@
+services:
+
+  # Our logger channel.
+  logger.channel.omnipedia_asset:
+    class: Drupal\Core\Logger\LoggerChannel
+    factory: logger.factory:get
+    arguments: ['omnipedia_asset']
+
+  omnipedia_asset.css.optimizer.core:
+    class: Drupal\omnipedia_asset\Asset\CssOptimizerCore
+    decorates: asset.css.optimizer
+    public: false
+    arguments:
+      - '@file_url_generator'
+      - '@logger.channel.omnipedia_asset'
+      - '@request_stack'
+      - '@settings'
+      - '@omnipedia_asset.css.optimizer.core.inner'
