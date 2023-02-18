@@ -25,4 +25,7 @@ services:
       - '@config.factory'
       - '@event_dispatcher'
       - '@cache.advagg'
-      - '@omnipedia_asset.css.optimizer.core.inner'
+      - '@logger.channel.omnipedia_asset'
+      - '@request_stack'
+      - '@settings'
+      - '@omnipedia_asset.css.optimizer.advagg.inner'
