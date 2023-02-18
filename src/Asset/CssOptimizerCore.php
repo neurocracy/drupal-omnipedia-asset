@@ -8,8 +8,8 @@ use Drupal\Core\Asset\AssetOptimizerInterface;
 use Drupal\Core\Asset\CssOptimizer;
 use Drupal\Core\File\FileUrlGeneratorInterface;
 use Drupal\Core\Site\Settings;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Psr\Log\LoggerInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Decorated Drupal core CSS asset optimizer that enforces primary host.
@@ -70,7 +70,7 @@ class CssOptimizerCore extends CssOptimizer {
   /**
    * Service constructor; saves dependencies.
    *
-   * @param \Drupal\Core\File\FileUrlGeneratorInterface $fileUrlGenerator
+   * @param \Drupal\Core\File\FileUrlGeneratorInterface|null $fileUrlGenerator
    *   The Drupal file URL generator.
    *
    * @param \Psr\Log\LoggerInterface $loggerChannel
@@ -84,6 +84,9 @@ class CssOptimizerCore extends CssOptimizer {
    *
    * @param \Drupal\Core\Asset\AssetOptimizerInterface $cssOptimizer
    *   The CSS optimizer service that we decorate.
+   *
+   * @todo Remove the null default value for $fileUrlGenerator in Drupal 10.0.0
+   *   as it's deprecated and removed in that core version.
    */
   public function __construct(
     FileUrlGeneratorInterface $fileUrlGenerator = null,
