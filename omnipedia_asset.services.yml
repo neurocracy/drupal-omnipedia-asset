@@ -16,3 +16,13 @@ services:
       - '@request_stack'
       - '@settings'
       - '@omnipedia_asset.css.optimizer.core.inner'
+
+  omnipedia_asset.advagg_css_optimization_event_subscriber:
+    class: Drupal\omnipedia_asset\EventSubscriber\Asset\AdvAggCssOptimizationEventSubscriber
+    arguments:
+      - '@logger.channel.omnipedia_asset'
+      - '@request_stack'
+      - '@settings'
+      - '@string_translation'
+    tags:
+      - { name: 'event_subscriber' }
