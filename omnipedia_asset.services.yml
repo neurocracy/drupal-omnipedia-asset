@@ -26,3 +26,11 @@ services:
       - '@string_translation'
     tags:
       - { name: 'event_subscriber' }
+
+  omnipedia_asset.css_url_rewriter:
+    class: Drupal\omnipedia_asset\Service\CssUrlRewriter
+    arguments:
+      - '@logger.channel.omnipedia_asset'
+      - '@request_stack'
+      - '@settings'
+      - '@string_translation'
