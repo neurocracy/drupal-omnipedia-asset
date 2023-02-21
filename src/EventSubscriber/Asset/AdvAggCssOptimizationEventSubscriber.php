@@ -118,17 +118,18 @@ class AdvAggCssOptimizationEventSubscriber implements EventSubscriberInterface {
    */
   public static function getSubscribedEvents(): array {
     return [
-      AssetOptimizationEvent::CSS => 'onCssOptimize',
+      AssetOptimizationEvent::CSS => 'onCssOptimizeServerIp',
+      AssetOptimizationEvent::CSS => 'onCssOptimizeAnyIp',
     ];
   }
 
   /**
-   * Rewrite URLs within optimized CSS.
+   * Rewrite URLs containing the current server IP address within optimized CSS.
    *
    * @param \Drupal\advagg\Asset\AssetOptimizationEvent $event
    *   The AdvAgg asset optimization event object.
    */
-  public function onCssOptimize(AssetOptimizationEvent $event): void {
+  public function onCssOptimizeServerIp(AssetOptimizationEvent $event): void {
 
     /** @var string The CSS file content. */
     $content = $event->getContent();
@@ -164,6 +165,60 @@ class AdvAggCssOptimizationEventSubscriber implements EventSubscriberInterface {
     );
 
     $this->loggerChannel->debug($message->render());
+
+  }
+
+  /**
+   * Rewrite URLs containing IP address within optimized CSS.
+   *
+   * @param \Drupal\advagg\Asset\AssetOptimizationEvent $event
+   *   The AdvAgg asset optimization event object.
+   */
+  public function onCssOptimizeAnyIp(AssetOptimizationEvent $event): void {
+
+    /** @var string The CSS file content. */
+    $content = $event->getContent();
+
+    /** @var string Regular expression pattern to match CSS url()s containing any IPv4 address. */
+    $pattern = '/url\(\s*(?<open_quote>[\'\"]?)https?:\/\/(?<address>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\/(?<path>[^\'\")]+)(?<close_quote>[\'\"]?)\s*\)/i';
+
+    /** @var string[] */
+    $foundAddresses = [];
+
+    $replacedContent = \preg_replace_callback($pattern, function(
+      array $matches
+    ) use ($content, &$foundAddresses) {
+
+      if (!\in_array($matches['address'], $foundAddresses)) {
+        $foundAddresses[] = $matches['address'];
+      }
+
+      return 'url(' .
+        $matches['open_quote'] . $this->scheme . '://' . $this->host . '/' .
+        $matches['path'] . $matches['close_quote'] .
+      ')';
+
+    }, $content, -1, $replaceCount);
+
+    if ($replaceCount === 0) {
+      return;
+    }
+
+    $event->setContent($replacedContent);
+
+    /** @var \Drupal\Core\StringTranslation\PluralTranslatableMarkup */
+    $message = $this->formatPlural(
+      count($foundAddresses),
+      'Replaced 1 instance of an IP address (<code>@addresses</code>) with the server host name (<code>@host</code>) in asset <code>@asset</code>.',
+      'Replaced @count instances of IP addresses (<code>@addresses</code>) with the server host name (<code>@host</code>) in asset <code>@asset</code>.',
+      [
+        '@addresses'  => implode(', ', $foundAddresses),
+        '@host'       => $this->host,
+        '@asset'      => $event->getAsset()['data'],
+      ]
+    );
+
+    $this->loggerChannel->notice($message->render());
 
   }
 
