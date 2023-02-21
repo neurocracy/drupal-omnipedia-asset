@@ -167,7 +167,7 @@ class CssOptimizerCore extends CssOptimizer {
     $url = $this->scheme . '://' . $this->host . '/' . $path;
 
     $this->loggerChannel->debug(
-      'Rewrote CSS asset <code>%match</code> into path <code>%path</code> and into URL <code>%url</code>.', [
+      'Core: Rewrote CSS asset <code>%match</code> into path <code>%path</code> and into URL <code>%url</code>.', [
         '%match'  => $matches[1],
         '%path'   => $path,
         '%url'    => $url,

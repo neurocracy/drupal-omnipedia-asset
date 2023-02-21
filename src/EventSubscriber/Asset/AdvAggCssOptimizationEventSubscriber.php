@@ -155,8 +155,8 @@ class AdvAggCssOptimizationEventSubscriber implements EventSubscriberInterface {
     /** @var \Drupal\Core\StringTranslation\PluralTranslatableMarkup */
     $message = $this->formatPlural(
       $replaceCount,
-      'Replaced 1 instance of the server address (<code>@address</code>) with the server host name (<code>@host</code>) in asset <code>@asset</code>.',
-      'Replaced @count instances of the server address (<code>@address</code>) with the server host name (<code>@host</code>) in asset <code>@asset</code>.',
+      'AdvAgg: Replaced 1 instance of the server address (<code>@address</code>) with the server host name (<code>@host</code>) in asset <code>@asset</code>.',
+      'AdvAgg: Replaced @count instances of the server address (<code>@address</code>) with the server host name (<code>@host</code>) in asset <code>@asset</code>.',
       [
         '@address'  => $this->serverAddress,
         '@host'     => $this->host,
@@ -209,8 +209,8 @@ class AdvAggCssOptimizationEventSubscriber implements EventSubscriberInterface {
     /** @var \Drupal\Core\StringTranslation\PluralTranslatableMarkup */
     $message = $this->formatPlural(
       count($foundAddresses),
-      'Replaced 1 instance of an IP address (<code>@addresses</code>) with the server host name (<code>@host</code>) in asset <code>@asset</code>.',
-      'Replaced @count instances of IP addresses (<code>@addresses</code>) with the server host name (<code>@host</code>) in asset <code>@asset</code>.',
+      'AdvAgg: Replaced 1 instance of an IP address (<code>@addresses</code>) with the server host name (<code>@host</code>) in asset <code>@asset</code>.',
+      'AdvAgg: Replaced @count instances of IP addresses (<code>@addresses</code>) with the server host name (<code>@host</code>) in asset <code>@asset</code>.',
       [
         '@addresses'  => implode(', ', $foundAddresses),
         '@host'       => $this->host,
