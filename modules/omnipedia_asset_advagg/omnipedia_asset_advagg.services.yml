@@ -1,7 +1,7 @@
 services:
 
-  omnipedia_asset_advagg.advagg_css_optimization_event_subscriber:
-    class: Drupal\omnipedia_asset_advagg\EventSubscriber\Asset\AdvAggCssOptimizationEventSubscriber
+  omnipedia_asset_advagg.css_optimization_event_subscriber:
+    class: Drupal\omnipedia_asset_advagg\EventSubscriber\Asset\CssOptimizationEventSubscriber
     arguments:
       - '@logger.channel.omnipedia_asset'
       - '@request_stack'

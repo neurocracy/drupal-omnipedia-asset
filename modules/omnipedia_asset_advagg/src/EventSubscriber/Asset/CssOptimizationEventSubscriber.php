@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 /**
  * Event subscriber to replace server address in optimized CSS with host name.
  */
-class AdvAggCssOptimizationEventSubscriber implements EventSubscriberInterface {
+class CssOptimizationEventSubscriber implements EventSubscriberInterface {
 
   use StringTranslationTrait;
 
