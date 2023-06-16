@@ -18,7 +18,7 @@ part of this codebase is useful or will inspire someone out there.
 
 # Requirements
 
-* [Drupal 9](https://www.drupal.org/download) ([Drupal 8 is end-of-life](https://www.drupal.org/psa-2021-11-30))
+* [Drupal 10.1](https://www.drupal.org/download)
 
 * PHP 8
 
@@ -53,5 +53,17 @@ In your root `composer.json`, add the following to the `"repositories"` section:
 ### Installing
 
 Once you've completed all of the above, run `composer require
-"drupal/omnipedia_asset:1.x-dev@dev"` in the root of your project to have
+"drupal/omnipedia_asset:2.x-dev@dev"` in the root of your project to have
 Composer install this and its required dependencies for you.
+
+----
+
+# Major breaking changes
+
+The following major version bumps indicate breaking changes:
+
+* 2.x:
+
+  * Now requires Drupal core 10.1 due to significant changes to its asset aggregation.
+
+  * Moved AdvAgg event subscriber to new [`omnipedia_asset_advagg` module](modules/omnipedia_asset_advagg) so the main module does not need to require [`drupal/advagg`](https://www.drupal.org/project/advagg); this new module now requires `drupal/advagg:^6.0.0`.

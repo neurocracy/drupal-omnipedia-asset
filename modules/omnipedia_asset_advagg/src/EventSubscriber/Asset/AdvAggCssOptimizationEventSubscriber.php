@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Drupal\omnipedia_asset\EventSubscriber\Asset;
+namespace Drupal\omnipedia_asset_advagg\EventSubscriber\Asset;
 
 use Drupal\advagg\Asset\AssetOptimizationEvent;
 use Drupal\Core\Site\Settings;

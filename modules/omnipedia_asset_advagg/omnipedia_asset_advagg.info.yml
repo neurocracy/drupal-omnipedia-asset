@@ -1,0 +1,10 @@
+name: Omnipedia - Asset - Advanced CSS/JS Aggregation (AdvAgg)
+type: module
+description: Provides Advanced CSS/JS Aggregation (AdvAgg) functionality for Omnipedia.
+package: Omnipedia
+core_version_requirement: ^10.1
+php: 8.0
+
+dependencies:
+  - advagg:advagg (^6.0.0)
+  - omnipedia_asset:omnipedia_asset
