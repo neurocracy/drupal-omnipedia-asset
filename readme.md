@@ -68,6 +68,12 @@ The following major version bumps indicate breaking changes:
 
   * Moved AdvAgg event subscriber to new [`omnipedia_asset_advagg` module](modules/omnipedia_asset_advagg) so the main module does not need to require [`drupal/advagg`](https://www.drupal.org/project/advagg); this new module now requires `drupal/advagg:^6.0.0`.
 
-  * Renamed `\Drupal\omnipedia_asset\Asset\CssOptimizerCore` to `\Drupal\omnipedia_asset\Asset\CssOptimizer` and service `omnipedia_asset.css.optimizer.core` to `omnipedia_asset.css.optimizer`.
+  * Renamed classes and services to remove redundant/unnecessary "core" and "advagg":
 
-  * Renamed `\Drupal\omnipedia_asset_advagg\EventSubscriber\Asset\AdvAggCssOptimizationEventSubscriber` to `\Drupal\omnipedia_asset_advagg\EventSubscriber\Asset\CssOptimizationEventSubscriber` and service `omnipedia_asset_advagg.advagg_css_optimization_event_subscriber` to `omnipedia_asset_advagg.css_optimization_event_subscriber` (removes redundant `AdvAgg`/`advagg`).
+    * Class `\Drupal\omnipedia_asset\Asset\CssOptimizerCore` to `\Drupal\omnipedia_asset\Asset\CssOptimizer`
+
+    * Service `omnipedia_asset.css.optimizer.core` to `omnipedia_asset.css.optimizer`
+
+    * Class `\Drupal\omnipedia_asset_advagg\EventSubscriber\Asset\AdvAggCssOptimizationEventSubscriber` to `\Drupal\omnipedia_asset_advagg\EventSubscriber\Asset\CssOptimizationEventSubscriber`
+
+    * Service `omnipedia_asset_advagg.advagg_css_optimization_event_subscriber` to `omnipedia_asset_advagg.css_optimization_event_subscriber`.
