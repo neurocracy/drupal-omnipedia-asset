@@ -67,3 +67,5 @@ The following major version bumps indicate breaking changes:
   * Now requires Drupal core 10.1 due to significant changes to its asset aggregation.
 
   * Moved AdvAgg event subscriber to new [`omnipedia_asset_advagg` module](modules/omnipedia_asset_advagg) so the main module does not need to require [`drupal/advagg`](https://www.drupal.org/project/advagg); this new module now requires `drupal/advagg:^6.0.0`.
+
+  * Renamed `\Drupal\omnipedia_asset\Asset\CssOptimizerCore` to `\Drupal\omnipedia_asset\Asset\CssOptimizer` and service `omnipedia_asset.css.optimizer.core` to `omnipedia_asset.css.optimizer`.

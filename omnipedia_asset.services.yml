@@ -6,8 +6,8 @@ services:
     factory: logger.factory:get
     arguments: ['omnipedia_asset']
 
-  omnipedia_asset.css.optimizer.core:
-    class: Drupal\omnipedia_asset\Asset\CssOptimizerCore
+  omnipedia_asset.css.optimizer:
+    class: Drupal\omnipedia_asset\Asset\CssOptimizer
     decorates: asset.css.optimizer
     public: false
     arguments:
@@ -15,4 +15,4 @@ services:
       - '@logger.channel.omnipedia_asset'
       - '@request_stack'
       - '@settings'
-      - '@omnipedia_asset.css.optimizer.core.inner'
+      - '@omnipedia_asset.css.optimizer.inner'

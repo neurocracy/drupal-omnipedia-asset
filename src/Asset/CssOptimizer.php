@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Drupal\omnipedia_asset\Asset;
 
 use Drupal\Core\Asset\AssetOptimizerInterface;
-use Drupal\Core\Asset\CssOptimizer;
+use Drupal\Core\Asset\CssOptimizer as CssOptimizerCore;
 use Drupal\Core\File\FileUrlGeneratorInterface;
 use Drupal\Core\Site\Settings;
 use Psr\Log\LoggerInterface;
@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 /**
  * Decorated Drupal core CSS asset optimizer that enforces primary host.
  */
-class CssOptimizerCore extends CssOptimizer {
+class CssOptimizer extends CssOptimizerCore {
 
   /**
    * The Drupal site settings name to attempt to retrieve the host from.
