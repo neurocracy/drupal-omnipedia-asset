@@ -3,6 +3,10 @@
   "description": "Omnipedia - Asset",
   "type": "drupal-custom-module",
   "license": "GPL-2.0-or-later",
+  "support": {
+    "docs": "https://github.com/neurocracy/drupal-omnipedia-asset",
+    "source": "https://github.com/neurocracy/drupal-omnipedia-asset"
+  },
   "authors": [
     {
       "name": "Ambient.Impact",
