@@ -34,6 +34,9 @@ class AssetRoutesEventSubscriber extends RouteSubscriberBase {
    *   served the maintenance page. Also checks for the '_maintenance_access'
    *   option on routes to bypass that check.
    *
+   * @see https://www.drupal.org/project/drupal/issues/3373328
+   *   Drupal core issue opened regarding this.
+   *
    * @todo Remove JavaScript route alteration as it's not necessary?
    *
    * @todo Potential security issues with any of this?
