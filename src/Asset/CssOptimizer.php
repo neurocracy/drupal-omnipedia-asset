@@ -22,13 +22,6 @@ class CssOptimizer extends CssOptimizerCore {
   protected const SETTINGS_NAME = 'primary_host';
 
   /**
-   * The CSS optimizer service that we decorate.
-   *
-   * @var \Drupal\Core\Asset\AssetOptimizerInterface
-   */
-  protected AssetOptimizerInterface $cssOptimizer;
-
-  /**
    * The host name to rewrite URLs to.
    *
    * @var string
@@ -38,13 +31,6 @@ class CssOptimizer extends CssOptimizerCore {
   protected string $host;
 
   /**
-   * Our logger channel.
-   *
-   * @var \Psr\Log\LoggerInterface
-   */
-  protected LoggerInterface $loggerChannel;
-
-  /**
    * The scheme to rewrite URLs to.
    *
    * @var string
@@ -52,20 +38,6 @@ class CssOptimizer extends CssOptimizerCore {
    * @see $this->rewriteFileURI()
    */
   protected string $scheme;
-
-  /**
-   * The Drupal site settings.
-   *
-   * @var \Drupal\Core\Site\Settings
-   */
-  protected Settings $settings;
-
-  /**
-   * The Symfony request stack.
-   *
-   * @var \Symfony\Component\HttpFoundation\RequestStack
-   */
-  protected RequestStack $requestStack;
 
   /**
    * Service constructor; saves dependencies.
@@ -87,18 +59,13 @@ class CssOptimizer extends CssOptimizerCore {
    */
   public function __construct(
     FileUrlGeneratorInterface $fileUrlGenerator,
-    LoggerInterface           $loggerChannel,
-    RequestStack              $requestStack,
-    Settings                  $settings,
-    AssetOptimizerInterface   $cssOptimizer
+    protected readonly LoggerInterface         $loggerChannel,
+    protected readonly RequestStack            $requestStack,
+    protected readonly Settings                $settings,
+    protected readonly AssetOptimizerInterface $cssOptimizer
   ) {
 
     parent::__construct($fileUrlGenerator);
-
-    $this->cssOptimizer   = $cssOptimizer;
-    $this->loggerChannel  = $loggerChannel;
-    $this->requestStack   = $requestStack;
-    $this->settings       = $settings;
 
     // If the primary host setting is set, use that.
     if (!empty($this->settings->get(self::SETTINGS_NAME))) {
