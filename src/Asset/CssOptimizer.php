@@ -84,12 +84,9 @@ class CssOptimizer extends CssOptimizerCore {
    *
    * @param \Drupal\Core\Asset\AssetOptimizerInterface $cssOptimizer
    *   The CSS optimizer service that we decorate.
-   *
-   * @todo Remove the null default value for $fileUrlGenerator in Drupal 10.0.0
-   *   as it's deprecated and removed in that core version.
    */
   public function __construct(
-    FileUrlGeneratorInterface $fileUrlGenerator = null,
+    FileUrlGeneratorInterface $fileUrlGenerator,
     LoggerInterface           $loggerChannel,
     RequestStack              $requestStack,
     Settings                  $settings,
