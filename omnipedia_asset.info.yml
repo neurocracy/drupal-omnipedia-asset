@@ -3,4 +3,4 @@ type: module
 description: Provides CSS and JavaScript asset-related functionality for Omnipedia.
 package: Omnipedia
 core_version_requirement: ^10.1
-php: 8.0
+php: 8.1

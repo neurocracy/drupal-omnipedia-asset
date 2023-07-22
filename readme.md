@@ -20,7 +20,7 @@ part of this codebase is useful or will inspire someone out there.
 
 * [Drupal 10.1](https://www.drupal.org/download)
 
-* PHP 8
+* PHP 8.1
 
 * [Composer](https://getcomposer.org/)
 
