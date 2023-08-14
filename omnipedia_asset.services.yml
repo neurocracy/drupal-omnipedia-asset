@@ -16,8 +16,3 @@ services:
       - '@request_stack'
       - '@settings'
       - '@omnipedia_asset.css.optimizer.inner'
-
-  omnipedia_asset.asset_routes_event_subscriber:
-    class: Drupal\omnipedia_asset\EventSubscriber\Routing\AssetRoutesEventSubscriber
-    tags:
-      - { name: 'event_subscriber' }
