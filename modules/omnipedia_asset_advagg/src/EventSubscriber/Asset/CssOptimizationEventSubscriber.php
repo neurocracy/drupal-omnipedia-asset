@@ -7,7 +7,6 @@ namespace Drupal\omnipedia_asset_advagg\EventSubscriber\Asset;
 use Drupal\advagg\Asset\AssetOptimizationEvent;
 use Drupal\Core\Site\Settings;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
-use Drupal\Core\StringTranslation\TranslationInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -32,13 +31,6 @@ class CssOptimizationEventSubscriber implements EventSubscriberInterface {
   protected string $host;
 
   /**
-   * Our logger channel.
-   *
-   * @var \Psr\Log\LoggerInterface
-   */
-  protected LoggerInterface $loggerChannel;
-
-  /**
    * The scheme to rewrite URLs to.
    *
    * @var string
@@ -51,20 +43,6 @@ class CssOptimizationEventSubscriber implements EventSubscriberInterface {
    * @var string
    */
   protected string $serverAddress;
-
-  /**
-   * The Drupal site settings.
-   *
-   * @var \Drupal\Core\Site\Settings
-   */
-  protected Settings $settings;
-
-  /**
-   * The Symfony request stack.
-   *
-   * @var \Symfony\Component\HttpFoundation\RequestStack
-   */
-  protected RequestStack $requestStack;
 
   /**
    * Event subscriber constructor; saves dependencies.
@@ -82,16 +60,11 @@ class CssOptimizationEventSubscriber implements EventSubscriberInterface {
    *   The Drupal string translation service.
    */
   public function __construct(
-    LoggerInterface       $loggerChannel,
-    RequestStack          $requestStack,
-    Settings              $settings,
-    TranslationInterface  $stringTranslation
+    protected readonly LoggerInterface  $loggerChannel,
+    protected readonly RequestStack     $requestStack,
+    protected readonly Settings         $settings,
+    protected $stringTranslation,
   ) {
-
-    $this->loggerChannel      = $loggerChannel;
-    $this->requestStack       = $requestStack;
-    $this->settings           = $settings;
-    $this->stringTranslation  = $stringTranslation;
 
     /** @var \Symfony\Component\HttpFoundation\Request The main request. */
     $request = $this->requestStack->getMainRequest();
