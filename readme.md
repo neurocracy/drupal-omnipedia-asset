@@ -18,7 +18,6 @@ which provides CSS and JavaScript asset-related functionality for
 
 # Installation
 
-
 ### Set up
 
 Ensure that you have your Drupal installation set up with the correct Composer
