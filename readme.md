@@ -8,7 +8,7 @@ which provides CSS and JavaScript asset-related functionality for
 
 # Requirements
 
-* [Drupal 10.1](https://www.drupal.org/download)
+* [Drupal 10.1 or 11](https://www.drupal.org/download)
 
 * PHP 8.1
 
